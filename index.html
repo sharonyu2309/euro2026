@@ -5,20 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>🗺️ 奧捷匈 15天大師級完美自由行行程表</title>
   <style>
-    /* 🎨 頂級現代奢華美學網頁設計 */
+    /* 🎨 歐洲奢華日系誌美學排版（完全校正截圖風格） */
     :root {
       --primary-color: #1a2a40;      /* 深邃經典藍 */
       --secondary-color: #c5a880;    /* 質感香檳金 */
-      --bg-color: #fcfbfa;           /* 典雅暖白 */
+      --bg-color: #fdfdfd;           /* 純淨暖白 */
       --card-bg: #ffffff;            /* 純白 */
       --text-main: #2d3748;          /* 深灰 */
-      --text-muted: #718096;         /* 淺灰 */
+      --text-muted: #718096;         /* 溫柔灰 */
       
-      /* 國家色彩標籤 - 莫蘭迪柔和色調 */
-      --hungary-color: #618264;      /* 迷霧綠 */
-      --slovakia-color: #4a7a96;     /* 復古藍 */
-      --austria-color: #b85c5c;      /* 胭脂紅 */
-      --czech-color: #7d6e8d;        /* 灰調紫 */
+      /* 天數緞帶專屬漸層：優雅香檳金調 */
+      --day-banner-bg: linear-gradient(90deg, #f7f4ef 0%, #ffffff 100%);
+      --day-banner-text: #8a6d3b;
+      
+      /* 莫蘭迪國家色彩標籤 */
+      --hungary-color: #618264;
+      --slovakia-color: #4a7a96;
+      --austria-color: #b85c5c;
+      --czech-color: #7d6e8d;
     }
 
     body {
@@ -30,18 +34,17 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* 頂部橫幅設計 */
+    /* 頂部精緻橫幅 */
     .header-banner {
       background: linear-gradient(135deg, var(--primary-color) 0%, #0d1726 100%);
       color: white;
       text-align: center;
-      padding: 40px 20px;
-      position: relative;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      padding: 35px 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
     }
     .header-banner h1 {
       margin: 0;
-      font-size: 2.2rem;
+      font-size: 2rem;
       font-weight: 700;
       letter-spacing: 2px;
       background: linear-gradient(to right, #ffffff, var(--secondary-color));
@@ -49,24 +52,24 @@
       -webkit-text-fill-color: transparent;
     }
     .header-banner p {
-      margin: 12px 0 0 0;
-      font-size: 1.05rem;
+      margin: 10px 0 0 0;
+      font-size: 1rem;
       color: #cbd5e0;
       letter-spacing: 1px;
     }
 
-    /* 核心固定導覽列（含雙欄位智能篩選） */
+    /* 核心固定導覽列（含智能雙欄位篩選） */
     .sticky-filter-bar {
       position: -webkit-sticky;
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(255, 255, 255, 0.85);
+      background: rgba(255, 255, 255, 0.9);
       -webkit-backdrop-filter: blur(12px);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(197, 168, 128, 0.2);
-      padding: 15px 20px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+      border-bottom: 1px solid rgba(197, 168, 128, 0.15);
+      padding: 12px 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.02);
     }
     .filter-wrapper {
       max-width: 1100px;
@@ -79,133 +82,116 @@
     .filter-box {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
     }
     .filter-box label {
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: var(--primary-color);
     }
     .filter-box select {
-      padding: 8px 16px;
+      padding: 6px 14px;
       border-radius: 20px;
       border: 1px solid #e2e8f0;
       background-color: var(--card-bg);
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: var(--text-main);
       cursor: pointer;
       outline: none;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.02);
       transition: all 0.3s;
     }
     .filter-box select:focus {
       border-color: var(--secondary-color);
-      box-shadow: 0 0 0 3px rgba(197, 168, 128, 0.2);
     }
 
-    /* 色塊對比圖例 */
-    .legend-container {
+    /* 💡 大師特製：高質感標籤色塊 */
+    .highlight { padding: 4px 10px; border-radius: 8px; font-weight: 600; display: inline-block; font-size: 0.85rem; }
+    .highlight.transit { background-color: #fff9e6; color: #b7791f; border: 1px solid #fbd38d; }
+    .highlight.show { background-color: #f7f0ff; color: #6b46c1; border: 1px solid #d6bcfa; }
+
+    /* 主動線容器 */
+    .itinerary-container {
       max-width: 1100px;
-      margin: 15px auto;
-      padding: 0 20px;
+      margin: 20px auto;
+      padding: 0 15px 60px 15px;
+    }
+
+    /* ❄️ 完美複製截圖：獨立天數橫幅緞帶 */
+    .day-section {
+      margin-bottom: 25px;
+      background: var(--card-bg);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      border: 1px solid #f0f0f0;
+    }
+    .day-banner {
+      background: var(--day-banner-bg);
+      padding: 12px 18px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--day-banner-text);
+      border-left: 5px solid var(--secondary-color);
       display: flex;
-      gap: 20px;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid #f2eee9;
     }
-    .legend-item { display: flex; align-items: center; gap: 6px; }
-    .legend-box { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
 
-    /* 💡 大師高質感色塊 */
-    .highlight { padding: 4px 10px; border-radius: 12px; font-weight: 600; display: inline-block; font-size: 0.85rem; }
-    .color-transit, .highlight.transit { background-color: #fff9e6; color: #b7791f; border: 1px solid #fbd38d; }
-    .color-show, .highlight.show { background-color: #f7f0ff; color: #6b46c1; border: 1px solid #d6bcfa; }
-
-    /* 表格容器（手機防爆、可橫向流暢滑動） */
-    .container {
-      max-width: 1150px;
-      margin: 0 auto;
-      padding: 0 15px 40px 15px;
-    }
+    /* 響應式水平滑動表格（手機直看超完美、橫滑極流暢） */
     .table-wrapper {
       width: 100%;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-      background-color: var(--card-bg);
-      border: 1px solid #edf2f7;
     }
-
     table {
       width: 100%;
-      border-collapse: separate;
-      border-spacing: 0;
-      min-width: 950px;
+      border-collapse: collapse;
+      min-width: 900px;
       text-align: left;
     }
 
-    /* ❄️ 凍結視窗優化：表頭永遠置頂 */
+    /* 凍結視窗：當滑動單天表格時，欄位名稱固定 */
     th {
-      background-color: var(--primary-color);
-      color: white;
-      padding: 18px 12px;
-      font-size: 0.95rem;
+      background-color: #faf9f6;
+      color: var(--primary-color);
+      padding: 12px 14px;
+      font-size: 0.88rem;
       font-weight: 600;
-      letter-spacing: 1px;
-      position: -webkit-sticky;
-      position: sticky;
-      top: 68px; /* 精準對齊客製化導覽列高度 */
-      z-index: 10;
-      border-bottom: 2px solid var(--secondary-color);
+      border-bottom: 1px solid #eaeaea;
+      white-space: nowrap;
     }
-
     td {
-      padding: 16px 12px;
-      border-bottom: 1px solid #f0f2f5;
+      padding: 14px 14px;
+      border-bottom: 1px solid #f7f7f7;
       vertical-align: top;
       font-size: 0.92rem;
       line-height: 1.6;
     }
-
     tr:last-child td { border-bottom: none; }
-    tr:nth-child(even) td { background-color: #faf9f6; }
-    tr:hover td { background-color: #f5f3ef !important; transition: background-color 0.2s; }
+    tr:hover td { background-color: #fafafa; }
 
-    /* 國家精緻緞帶 badge */
+    /* 國家 Badge 緞帶 */
     .badge {
       display: inline-block;
-      padding: 4px 10px;
-      border-radius: 6px;
-      font-size: 0.78rem;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
       font-weight: bold;
       color: white;
-      letter-spacing: 1px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
     .hungary { background-color: var(--hungary-color); }
     .slovakia { background-color: var(--slovakia-color); }
     .austria { background-color: var(--austria-color); }
     .czech { background-color: var(--czech-color); }
 
-    /* 內容細節優化 */
-    td b { color: #1a202c; }
-    .arrow-icon { color: var(--secondary-color); margin: 0 3px; font-weight: bold; }
+    .arrow-icon { color: var(--secondary-color); margin: 0 2px; font-weight: bold; }
     .price-text { color: #c53030; font-weight: 600; }
     .time-text { color: #4a5568; font-weight: 500; }
 
-    /* 手機版 RWD 高強度體驗優化 */
     @media (max-width: 768px) {
-      .header-banner { padding: 30px 15px; }
-      .header-banner h1 { font-size: 1.6rem; }
-      .header-banner p { font-size: 0.9rem; }
-      .sticky-filter-bar { padding: 12px 10px; }
-      .filter-wrapper { gap: 10px; }
-      .filter-box label { font-size: 0.85rem; }
-      .filter-box select { padding: 6px 12px; font-size: 0.85rem; }
-      th { top: 61px; padding: 12px 8px; font-size: 0.85rem; }
-      td { padding: 12px 8px; font-size: 0.85rem; }
+      .header-banner h1 { font-size: 1.5rem; }
+      th, td { padding: 10px; font-size: 0.85rem; }
     }
   </style>
 </head>
@@ -217,7 +203,7 @@
     <p>Sharon & 薏安 & Alyssa & 韻如 · 2026 浪漫歐洲合體之旅</p>
   </div>
 
-  <!-- 核心固定導覽列（智能篩選器） -->
+  <!-- 核心固定導覽列（智能雙篩選器） -->
   <div class="sticky-filter-bar">
     <div class="filter-wrapper">
       <div class="filter-box">
@@ -254,41 +240,64 @@
     </div>
   </div>
 
-  <!-- 色塊標註說明圖例 -->
-  <div class="legend-container">
-    <div class="legend-item"><span class="legend-box color-transit"></span>交通跨國移動 / 凌晨叫車</div>
-    <div class="legend-item"><span class="legend-box color-show"></span>精選歌劇音樂會 / 特色遊船</div>
-  </div>
+  <!-- 行程主貨櫃 -->
+  <div class="itinerary-container">
 
-  <!-- 行程主表格結構 -->
-  <div class="container">
-    <div class="table-wrapper">
-      <table id="itineraryTable">
-        <thead>
-          <tr>
-            <th style="width: 10%;">日期/天數</th>
-            <th style="width: 12%;">國家/城市</th>
-            <th style="width: 25%;">行程動線 / 推薦項目</th>
-            <th style="width: 15%;">獨立交通方式</th>
-            <th style="width: 12%;">營業時間</th>
-            <th style="width: 10%;">預估費用</th>
-            <th style="width: 26%;">備註 / 大師靈魂重點</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr data-date="9/21" data-country="匈牙利">
-            <td><b>9/21 (一)</b><br><span style="color:var(--text-muted)">Day 1</span></td>
-            <td><span class="badge hungary">匈牙利</span><br>布達佩斯</td>
-            <td><b>Baross Hotel Check-in</b><br><span class="arrow-icon">➔</span> 多瑙河畔鞋子<br><span class="arrow-icon">➔</span> 國會大廈精美外觀夜景</td>
-            <td>步行或搭乘<br>路面電車 2 號線</td>
-            <td class="time-text">景點 24H 開放</td>
-            <td class="price-text">免費</td>
-            <td><b>【Sharon & 薏安首日抵達】</b><br>入住 Keleti 車站旁飯店放行李。傍晚沿著多瑙河散步，看國會大廈世界級金色點燈，吃碗匈牙利燉牛肉調整時差。</td>
-          </tr>
-          <tr data-date="9/22" data-country="斯洛伐克">
-            <td><b>9/22 (二)</b><br><span style="color:var(--text-muted)">Day 2</span></td>
-            <td><span class="badge slovakia">斯洛伐克</span><br>布拉提斯拉瓦</td>
-            <td><div class="highlight transit"><b>09:30 搭歐鐵跨國移動</b></div><br><span class="arrow-icon">➔</span> <b>Hotel Matyšák Check-in</b><br><span class="arrow-icon">➔</span> 藍色教堂 & 舊城區散步</td>
-            <td><b>已購 09:30 火車</b><br>(11:55 抵達)<br>市區步行</td>
-            <td class="time-text">舊城區 24H</td>
-            <td>火車已購<br><span class="price-text">景點免費</span></td>
+    <!-- Day 1 卡片 -->
+    <div class="day-section" id="section-9/21" data-date="9/21" data-country="匈牙利">
+      <div class="day-banner">🗓️ Day 1 : 9/21 (一) - 抵達布達佩斯金色多瑙河</div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr><th style="width:12%">時段</th><th style="width:15%">國家/城市</th><th style="width:28%">行程地點 / 推薦動線</th><th style="width:15%">交通</th><th style="width:10%">預估費用</th><th style="width:20%">備註/大師特色</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="time-text">下午 / 傍晚</td>
+              <td><span class="badge hungary">匈牙利</span> 布達佩斯</td>
+              <td><b>Baross Hotel 辦理 Check-in</b></td>
+              <td>市區接駁步行</td>
+              <td class="price-text">免費</td>
+              <td><b>【Sharon & 薏安先抵達】</b> 入住 Keleti 車站旁飯店放行李。</td>
+            </tr>
+            <tr>
+              <td class="time-text">晚上</td>
+              <td><span class="badge hungary">匈牙利</span> 布達佩斯</td>
+              <td>多瑙河畔鞋子 <span class="arrow-icon">➔</span> 國會大廈精美外觀夜景</td>
+              <td>步行或路面電車 2 號線</td>
+              <td class="price-text">免費</td>
+              <td>欣賞世界級點燈夜景，吃碗匈牙利燉牛肉調整時差。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Day 2 卡片 -->
+    <div class="day-section" id="section-9/22" data-date="9/22" data-country="斯洛伐克 匈牙利">
+      <div class="day-banner">🗓️ Day 2 : 9/22 (二) - 前進斯洛伐克與多瑙河遊船</div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr><th style="width:12%">時段</th><th style="width:15%">國家/城市</th><th style="width:28%">行程地點 / 推薦動線</th><th style="width:15%">交通</th><th style="width:10%">預估費用</th><th style="width:20%">備註/大師特色</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="time-text">上午</td>
+              <td><span class="badge slovakia">斯洛伐克</span> 布拉提斯拉瓦</td>
+              <td><div class="highlight transit"><b>09:30 搭歐鐵火車跨國</b></div> <span class="arrow-icon">➔</span> <b>Hotel Matyšák Check-in</b></td>
+              <td><b>已購 09:30 火車</b><br>(11:55 抵達)</td>
+              <td>火車已購</td>
+              <td><b>【Sharon & 薏安移動日】</b> 到站首要先去飯店放行李。</td>
+            </tr>
+            <tr>
+              <td class="time-text">下午</td>
+              <td><span class="badge slovakia">斯洛伐克</span> 布拉提斯拉瓦</td>
+              <td>藍色教堂 <span class="arrow-icon">➔</span> 舊城區散步尋找趣味雕像</td>
+              <td>市區步行</td>
+              <td class="price-text">免費</td>
+              <td>輕鬆漫步，晚餐推薦前往著名的 Slovak Pub。</td>
+            </tr>
+            <tr>
+              <td class="time-text">晚上</td>
+              <td><span class="badge hungary">匈牙利</span> 布達佩斯</td>
