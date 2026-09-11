@@ -1,215 +1,294 @@
-# 🗺️ 奧捷匈 15天大師級自由行行程表
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🗺️ 奧捷匈 15天大師級完美自由行行程表</title>
+  <style>
+    /* 🎨 頂級現代奢華美學網頁設計 */
+    :root {
+      --primary-color: #1a2a40;      /* 深邃經典藍 */
+      --secondary-color: #c5a880;    /* 質感香檳金 */
+      --bg-color: #fcfbfa;           /* 典雅暖白 */
+      --card-bg: #ffffff;            /* 純白 */
+      --text-main: #2d3748;          /* 深灰 */
+      --text-muted: #718096;         /* 淺灰 */
+      
+      /* 國家色彩標籤 - 莫蘭迪柔和色調 */
+      --hungary-color: #618264;      /* 迷霧綠 */
+      --slovakia-color: #4a7a96;     /* 復古藍 */
+      --austria-color: #b85c5c;      /* 胭脂紅 */
+      --czech-color: #7d6e8d;        /* 灰調紫 */
+    }
 
-專屬客製化：Sharon、薏安、Alyssa、韻如 四人浪漫歐洲合體之旅！
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft JhengHei", sans-serif;
+      color: var(--text-main);
+      background-color: var(--bg-color);
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
 
-<div class="filter-container">
-  <div class="filter-box">
-    <label for="dateFilter">📅 篩選日期：</label>
-    <select id="dateFilter" onchange="filterItinerary()">
-      <option value="all">顯示所有日期</option>
-      <option value="9/21">9/21 (一) Day 1</option>
-      <option value="9/22">9/22 (二) Day 2</option>
-      <option value="9/23">9/23 (三) Day 3</option>
-      <option value="9/24">9/24 (四) Day 4</option>
-      <option value="9/25">9/25 (五) Day 5</option>
-      <option value="9/26">9/26 (六) Day 6</option>
-      <option value="9/27">9/27 (日) Day 7</option>
-      <option value="9/28">9/28 (一) Day 8</option>
-      <option value="9/29">9/29 (二) Day 9</option>
-      <option value="9/30">9/30 (三) Day 10</option>
-      <option value="10/1">10/1 (四) Day 11</option>
-      <option value="10/2">10/2 (五) Day 12</option>
-      <option value="10/3">10/3 (六) Day 13</option>
-      <option value="10/4">10/4 (日) Day 14</option>
-      <option value="10/5">10/5 (一) Day 15</option>
-    </select>
+    /* 頂部橫幅設計 */
+    .header-banner {
+      background: linear-gradient(135deg, var(--primary-color) 0%, #0d1726 100%);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      position: relative;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    .header-banner h1 {
+      margin: 0;
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      background: linear-gradient(to right, #ffffff, var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .header-banner p {
+      margin: 12px 0 0 0;
+      font-size: 1.05rem;
+      color: #cbd5e0;
+      letter-spacing: 1px;
+    }
+
+    /* 核心固定導覽列（含雙欄位智能篩選） */
+    .sticky-filter-bar {
+      position: -webkit-sticky;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.85);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(197, 168, 128, 0.2);
+      padding: 15px 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    }
+    .filter-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .filter-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .filter-box label {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--primary-color);
+    }
+    .filter-box select {
+      padding: 8px 16px;
+      border-radius: 20px;
+      border: 1px solid #e2e8f0;
+      background-color: var(--card-bg);
+      font-size: 0.95rem;
+      color: var(--text-main);
+      cursor: pointer;
+      outline: none;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+      transition: all 0.3s;
+    }
+    .filter-box select:focus {
+      border-color: var(--secondary-color);
+      box-shadow: 0 0 0 3px rgba(197, 168, 128, 0.2);
+    }
+
+    /* 色塊對比圖例 */
+    .legend-container {
+      max-width: 1100px;
+      margin: 15px auto;
+      padding: 0 20px;
+      display: flex;
+      gap: 20px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      justify-content: center;
+    }
+    .legend-item { display: flex; align-items: center; gap: 6px; }
+    .legend-box { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+
+    /* 💡 大師高質感色塊 */
+    .highlight { padding: 4px 10px; border-radius: 12px; font-weight: 600; display: inline-block; font-size: 0.85rem; }
+    .color-transit, .highlight.transit { background-color: #fff9e6; color: #b7791f; border: 1px solid #fbd38d; }
+    .color-show, .highlight.show { background-color: #f7f0ff; color: #6b46c1; border: 1px solid #d6bcfa; }
+
+    /* 表格容器（手機防爆、可橫向流暢滑動） */
+    .container {
+      max-width: 1150px;
+      margin: 0 auto;
+      padding: 0 15px 40px 15px;
+    }
+    .table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+      background-color: var(--card-bg);
+      border: 1px solid #edf2f7;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      min-width: 950px;
+      text-align: left;
+    }
+
+    /* ❄️ 凍結視窗優化：表頭永遠置頂 */
+    th {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 18px 12px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      position: -webkit-sticky;
+      position: sticky;
+      top: 68px; /* 精準對齊客製化導覽列高度 */
+      z-index: 10;
+      border-bottom: 2px solid var(--secondary-color);
+    }
+
+    td {
+      padding: 16px 12px;
+      border-bottom: 1px solid #f0f2f5;
+      vertical-align: top;
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background-color: #faf9f6; }
+    tr:hover td { background-color: #f5f3ef !important; transition: background-color 0.2s; }
+
+    /* 國家精緻緞帶 badge */
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: bold;
+      color: white;
+      letter-spacing: 1px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .hungary { background-color: var(--hungary-color); }
+    .slovakia { background-color: var(--slovakia-color); }
+    .austria { background-color: var(--austria-color); }
+    .czech { background-color: var(--czech-color); }
+
+    /* 內容細節優化 */
+    td b { color: #1a202c; }
+    .arrow-icon { color: var(--secondary-color); margin: 0 3px; font-weight: bold; }
+    .price-text { color: #c53030; font-weight: 600; }
+    .time-text { color: #4a5568; font-weight: 500; }
+
+    /* 手機版 RWD 高強度體驗優化 */
+    @media (max-width: 768px) {
+      .header-banner { padding: 30px 15px; }
+      .header-banner h1 { font-size: 1.6rem; }
+      .header-banner p { font-size: 0.9rem; }
+      .sticky-filter-bar { padding: 12px 10px; }
+      .filter-wrapper { gap: 10px; }
+      .filter-box label { font-size: 0.85rem; }
+      .filter-box select { padding: 6px 12px; font-size: 0.85rem; }
+      th { top: 61px; padding: 12px 8px; font-size: 0.85rem; }
+      td { padding: 12px 8px; font-size: 0.85rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 頂部精美橫幅 -->
+  <div class="header-banner">
+    <h1>🗺️ 奧捷匈 15天大師級自由行行程表</h1>
+    <p>Sharon & 薏安 & Alyssa & 韻如 · 2026 浪漫歐洲合體之旅</p>
   </div>
-  
-  <div class="filter-box">
-    <label for="countryFilter">🇪🇺 篩選國家：</label>
-    <select id="countryFilter" onchange="filterItinerary()">
-      <option value="all">顯示所有國家</option>
-      <option value="匈牙利">🇭🇺 匈牙利 (布達佩斯)</option>
-      <option value="斯洛伐克">🇸🇰 斯洛伐克</option>
-      <option value="奧地利">🇦🇹 奧地利 (維也納/哈修)</option>
-      <option value="捷克">🇨🇿 捷克 (布拉格/CK)</option>
-    </select>
+
+  <!-- 核心固定導覽列（智能篩選器） -->
+  <div class="sticky-filter-bar">
+    <div class="filter-wrapper">
+      <div class="filter-box">
+        <label for="dateFilter">📅 選擇日期：</label>
+        <select id="dateFilter" onchange="filterItinerary()">
+          <option value="all">顯示所有日期</option>
+          <option value="9/21">9/21 (一) Day 1</option>
+          <option value="9/22">9/22 (二) Day 2</option>
+          <option value="9/23">9/23 (三) Day 3</option>
+          <option value="9/24">9/24 (四) Day 4</option>
+          <option value="9/25">9/25 (五) Day 5</option>
+          <option value="9/26">9/26 (六) Day 6</option>
+          <option value="9/27">9/27 (日) Day 7</option>
+          <option value="9/28">9/28 (一) Day 8</option>
+          <option value="9/29">9/29 (二) Day 9</option>
+          <option value="9/30">9/30 (三) Day 10</option>
+          <option value="10/1">10/1 (四) Day 11</option>
+          <option value="10/2">10/2 (五) Day 12</option>
+          <option value="10/3">10/3 (六) Day 13</option>
+          <option value="10/4">10/4 (日) Day 14</option>
+          <option value="10/5">10/5 (一) Day 15</option>
+        </select>
+      </div>
+      <div class="filter-box">
+        <label for="countryFilter">🇪🇺 選擇國家：</label>
+        <select id="countryFilter" onchange="filterItinerary()">
+          <option value="all">顯示所有國家</option>
+          <option value="匈牙利">🇭🇺 匈牙利 (布達佩斯)</option>
+          <option value="斯洛伐克">🇸🇰 斯洛伐克</option>
+          <option value="奧地利">🇦🇹 奧地利 (維也納/哈修)</option>
+          <option value="捷克">🇨🇿 捷克 (布拉格/CK)</option>
+        </select>
+      </div>
+    </div>
   </div>
-</div>
 
-<div class="legend-container">
-  <span class="legend-item"><span class="legend-box color-transit"></span>交通移動 / 自行叫車</span>
-  <span class="legend-item"><span class="legend-box color-show"></span>精選表演 / 特色遊船</span>
-</div>
+  <!-- 色塊標註說明圖例 -->
+  <div class="legend-container">
+    <div class="legend-item"><span class="legend-box color-transit"></span>交通跨國移動 / 凌晨叫車</div>
+    <div class="legend-item"><span class="legend-box color-show"></span>精選歌劇音樂會 / 特色遊船</div>
+  </div>
 
-<div class="table-wrapper">
-  <table id="itineraryTable">
-    <thead>
-      <tr>
-        <th>日期/天數</th>
-        <th>國家/城市</th>
-        <th>行程動線 / 推薦項目</th>
-        <th>獨立交通方式</th>
-        <th>營業時間</th>
-        <th>預估費用</th>
-        <th>備註 / 大師靈魂重點</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr data-date="9/21" data-country="匈牙利">
-        <td><b>9/21 (一)</b><br>Day 1</td>
-        <td><span class="badge hungary">匈牙利</span><br>布達佩斯</td>
-        <td><b>Baross Hotel Check-in</b><br>➔ 多瑙河畔鞋子<br>➔ 國會大廈精美夜景</td>
-        <td>步行或路面電車 2 號線</td>
-        <td>景點 24H 開放</td>
-        <td>免費</td>
-        <td><b>【Sharon & 薏安先抵達】</b><br>入住 Keleti 車站旁飯店，調整時差，看多瑙河金色點燈。晚餐吃燉牛肉。</td>
-      </tr>
-      <tr data-date="9/22" data-country="斯洛伐克">
-        <td><b>9/22 (二)</b><br>Day 2</td>
-        <td><span class="badge slovakia">斯洛伐克</span><br>布拉提斯拉瓦</td>
-        <td><div class="highlight transit"><b>09:30 搭火車跨國移動</b></div>➔ <b>Hotel Matyšák Check-in</b><br>➔ 藍色教堂 & 舊城區散步</td>
-        <td>已購 09:30 火車<br>(11:55 抵達)<br>市區步行</td>
-        <td>舊城區 24H</td>
-        <td>火車已購<br>景點免費</td>
-        <td><b>【Sharon & 薏安移動日】</b><br>到站首要回飯店放行李。漫步舊城尋找趣味雕像。晚上吃傳統羊起司麵疙瘩。</td>
-      </tr>
-      <tr data-date="9/22" data-country="匈牙利">
-        <td><b>9/22 (二)</b><br>Day 2 晚</td>
-        <td><span class="badge hungary">匈牙利</span><br>布達佩斯</td>
-        <td>布達皇宮、漁人堡<br>➔ <div class="highlight show"><b>多瑙河黃昏/夜間遊船</b></div></td>
-        <td>步行至碼頭 (如 Dock 11)</td>
-        <td>船班 18:00-21:00</td>
-        <td>約 15-25 EUR</td>
-        <td>站在漁人堡俯瞰多瑙河。傍晚**搭船吹風**，欣賞兩岸金色倒影。</td>
-      </tr>
-      <tr data-date="9/23" data-country="奧地利">
-        <td><b>9/23 (三)</b><br>Day 3</td>
-        <td><span class="badge austria">奧地利</span><br>維也納</td>
-        <td>早上：布拉提斯拉瓦城堡<br>➔ <div class="highlight transit"><b>15:50 搭直達火車出發</b></div><br>➔ <b>Premier Inn Check-in</b></td>
-        <td>已購 15:50 火車<br>(16:46 抵達)<br>地鐵 U1 線</td>
-        <td>城堡外圍 24H<br>飯店 24H 櫃檯</td>
-        <td>火車已購<br>景點免費</td>
-        <td><b>【Sharon & 薏安移動日 / 直達車沒問題】</b><br>下午順利到維也納，先 check-in 放行李。晚上可衝中央車站大超市採買。</td>
-      </tr>
-      <tr data-date="9/24" data-country="奧地利">
-        <td><b>9/24 (四)</b><br>Day 4</td>
-        <td><span class="badge austria">奧地利</span><br>維也納</td>
-        <td>舊城區自由逛<br>➔ 換至星辰飯店<br>➔ <b>四人合體會合</b><br>➔ 聖史蒂芬大教堂散步</td>
-        <td>步行或地鐵 U1 線</td>
-        <td>教堂大廳至 22:00</td>
-        <td>免費<br>(登頂約 7 EUR)</td>
-        <td><b>【四人合體日】</b><br>Alyssa & 韻如抵達會合，晚餐大推 Figlmüller 比臉大炸豬排（必提早數月網路預約）。</td>
-      </tr>
-      <tr data-date="9/25" data-country="奧地利">
-        <td><b>9/25 (五)</b><br>Day 5</td>
-        <td><span class="badge austria">奧地利</span><br>維也納</td>
-        <td><b>葛拉本大道精品購物</b><br>➔ 世界最美中央咖啡館<br>➔ 晚上：<div class="highlight show"><b>維也納國家歌劇院表演</b></div></td>
-        <td>步行或地鐵 U1/U3 線</td>
-        <td>精品至 19:00<br>咖啡至 22:00</td>
-        <td>精品看個人<br>下午茶 15-25 EUR</td>
-        <td><b>【精品避開週日 / 表演補入】</b><br>下午精品瘋狂採買，不買精品去喝拿鐵聽鋼琴。晚上親臨歌劇殿堂（需著正裝）。</td>
-      </tr>
-      <tr data-date="9/26" data-country="奧地利">
-        <td><b>9/26 (六)</b><br>Day 6</td>
-        <td><span class="badge austria">奧地利</span><br>哈修塔特</td>
-        <td><div class="highlight transit"><b>哈修塔特明信片角度 ＆ 鹽礦一日遊</b></div></td>
-        <td>維也納出發一日遊<br>（旅行社接駁大巴）</td>
-        <td>一日遊通常<br>07:30 集合</td>
-        <td>約 100-130 EUR<br>(含大巴車資)</td>
-        <td><b>【哈修塔特仙境一日遊】</b><br>免去繁瑣轉車！搭大巴輕鬆往返絕美湖畔仙境。</td>
-      </tr>
-      <tr data-date="9/27" data-country="奧地利">
-        <td><b>9/27 (日)</b><br>Day 7</td>
-        <td><span class="badge austria">奧地利</span><br>維也納</td>
-        <td><b>奢華美泉宮(熊布朗宮)</b><br>➔ 奧地利國家圖書館<br>➔ 傍晚：百水公寓藝術牆</td>
-        <td>地鐵 U4 / U1 /<br>路面電車 1 號線</td>
-        <td>美泉宮 08:30-17:30<br>圖書館至 18:00</td>
-        <td>美泉宮 ~29 EUR<br>圖書館 ~10 EUR</td>
-        <td><b>【強推雙皇宮之首 / 百水景點補入】</b><br>週日精品沒開，安排宮殿美學！下午逛夢幻國家圖書館古籍大廳，黃昏拍百水公寓。</td>
-      </tr>
-      <tr data-date="9/28" data-country="匈牙利">
-        <td><b>9/28 (一)</b><br>Day 8</td>
-        <td><span class="badge hungary">匈牙利</span><br>布達佩斯</td>
-        <td><div class="highlight transit"><b>10:27 搭火車移動回匈牙利</b></div>➔ <b>民宿 Check-in (3pm)</b><br>➔ 衝中央市場 (18:00關)</td>
-        <td>已購 10:27 火車<br>布達佩斯路面電車</td>
-        <td>中央市場 06:00-18:00</td>
-        <td>火車已購<br>市場小吃 5-15 EUR</td>
-        <td><b>【放行李首要】</b><br>入住 Deák Ferenc tér 民宿放好行李秒衝市場橫掃鵝肝醬、紅椒粉。</td>
-      </tr>
-      <tr data-date="9/29" data-country="匈牙利">
-        <td><b>9/29 (二)</b><br>Day 9</td>
-        <td><span class="badge hungary">匈牙利</span><br>布達佩斯</td>
-        <td><b>匈牙利國會大廈內部導覽</b><br>➔ 晚餐：Menza 鴨肝料理<br>➔ 晚上：Szimpla Kert 廢墟酒吧</td>
-        <td>地鐵 M2 線 /<br>舊城區步行</td>
-        <td>國會 08:00-16:00<br>廢墟酒吧至 04:00</td>
-        <td>國會導覽約 25 EUR<br>酒吧調酒 ~10 EUR</td>
-        <td><b>【布達佩斯精華補入】</b><br>走進奢華國會大廈看黃金階梯（必先預約）。晚上去全球知名廢墟酒吧體驗迷幻夜生活。</td>
-      </tr>
-      <tr data-date="9/30" data-country="匈牙利">
-        <td><b>9/30 (三)</b><br>Day 10</td>
-        <td><span class="badge hungary">匈牙利</span><br>布達佩斯</td>
-        <td><b>塞切尼溫泉浴場(Széchenyi)</b><br>➔ 市區自由活動/藥妝伴手禮採買</td>
-        <td>地鐵 M1 線</td>
-        <td>溫泉 07:00-20:00</td>
-        <td>約 30-35 EUR</td>
-        <td>在百年宮殿內體驗「泡湯下西洋棋」。下午補買伴手禮。因隔天極早班機，今晚務必早點睡！</td>
-      </tr>
-      <tr data-date="10/1" data-country="捷克">
-        <td><b>10/1 (四)</b><br>Day 11</td>
-        <td><span class="badge czech">捷克</span><br>布拉格</td>
-        <td><div class="highlight transit"><b>05:50 瑞安航空飛捷克 (凌晨 03:20 自行叫 Bolt XL 大車)</b></div>➔ <b>Clarion Hotel 寄行李</b><br>➔ 舊城廣場、天文鐘內部、火藥塔</td>
-        <td>已購 05:50 班機<br>機場巴士 ➔ 地鐵</td>
-        <td>天文鐘登頂至 20:00</td>
-        <td>機票已購<br>天文鐘登頂約 11 EUR</td>
-        <td><b>【超早移動日 / 自行叫車指南】</b><br>凌晨搭預約好的大車直奔機場。抵布拉格放完行李直接跑舊城、登天文鐘塔頂。晚餐吃地窖餐廳。</td>
-      </tr>
-      <tr data-date="10/2" data-country="捷克">
-        <td><b>10/2 (五)</b><br>Day 12</td>
-        <td><span class="badge czech">捷克</span><br>布拉格</td>
-        <td>布拉格城堡區、聖維特大教堂、黃金巷<br>➔ 下午：哈維爾市集速逛<br>➔ 傍晚：<div class="highlight show"><b>城堡區聖喬治大殿暮色音樂會</b></div></td>
-        <td>路面電車 22 號上山<br>市區步行</td>
-        <td>城堡 09:00-17:00<br>市集至 18:30<br>音樂會通常 17:00 後</td>
-        <td>城堡 B 套票 ~16 EUR<br>音樂會約 25-40 EUR</td>
-        <td><b>【捷克精華 / 表演補入】</b><br>大半天參觀最大城堡群、朝聖卡夫卡黃金巷、逛古老市集。傍晚在千年教堂聽弦樂音樂會。</td>
-      </tr>
-      <tr data-date="10/3" data-country="捷克">
-        <td><b>10/3 (六)</b><br>Day 13</td>
-        <td><span class="badge czech">捷克</span><br>捷克小鎮</td>
-        <td><div class="highlight transit"><b>CK小鎮 (Český Krumlov) 童話一日遊</b></div></td>
-        <td>自理(搭 RegioJet 大巴)<br>或參加布拉格出發一日遊</td>
-        <td>小鎮全天開放</td>
-        <td>大巴來回約 20 EUR<br>一日遊約 60-80 EUR</td>
-        <td><b>【CK小鎮一日遊】</b><br>被蜿蜒河道包圍的紅磚瓦童話世界。時間有限，直接在布拉格跟一日遊最省心。</td>
-      </tr>
-      <tr data-date="10/4" data-country="捷克">
-        <td><b>10/4 (日)</b><br>Day 14</td>
-        <td><span class="badge czech">捷克</span><br>布拉格</td>
-        <td><b>查理大橋 & 約翰藍儂牆</b><br>➔ 下午茶：Café Louvre (羅浮咖啡)</td>
-        <td>步行或路面電車</td>
-        <td>大橋 24H 開放<br>咖啡館至 22:00</td>
-        <td>大橋免費<br>下午茶 10-18 EUR</td>
-        <td>清晨或傍晚前來避開人潮，摸大橋聖人雕像許願。下午到百年咖啡館喝愛因斯坦最愛的熱可可。</td>
-      </tr>
-      <tr data-date="10/5" data-country="捷克">
-        <td><b>10/5 (一)</b><br>Day 15</td>
-        <td><span class="badge czech">捷克</span><br>回程</td>
-        <td><div class="highlight transit"><b>布拉格市區 ➔ 維也納機場 ➔ 台北</b></div></td>
-        <td>歐鐵 (Prague to Wien Airport)<br>➔ 國際航班飛機</td>
-        <td>依航班時間</td>
-        <td>火車票約 25-40 EUR</td>
-        <td><b>【完美賦歸】</b><br>帶著塞滿紅椒粉、鵝肝醬、精品與滿滿合體回憶的行李前往維也納機場登機。10/6 抵台！</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<style>
-  /* 專業網頁美學設計 & 凍結視窗/色塊優化 */
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: #333; line-height: 1.5; padding: 10px; max-width: 1000px; margin: 0 auto; background-color: #f8f9fa; }
-  h1 { color: #1a365d; border-bottom: 3px solid #2b6cb0; padding-bottom: 8px; font-size: 1.8rem; text-align: center; margin-top: 10px; }
-  
-  /* 篩選欄位 */
-  .filter-container { display: flex; flex-wrap: wrap; gap: 10px; background: #1a365d; padding: 15px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-  .filter-box { flex: 1; min-width: 160px; display: flex; flex-direction: column; }
-  .filter-box label { color: #fff; font-weight: bold; margin-bottom: 6px; font-size: 0.9rem; }
+  <!-- 行程主表格結構 -->
+  <div class="container">
+    <div class="table-wrapper">
+      <table id="itineraryTable">
+        <thead>
+          <tr>
+            <th style="width: 10%;">日期/天數</th>
+            <th style="width: 12%;">國家/城市</th>
+            <th style="width: 25%;">行程動線 / 推薦項目</th>
+            <th style="width: 15%;">獨立交通方式</th>
+            <th style="width: 12%;">營業時間</th>
+            <th style="width: 10%;">預估費用</th>
+            <th style="width: 26%;">備註 / 大師靈魂重點</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-date="9/21" data-country="匈牙利">
+            <td><b>9/21 (一)</b><br><span style="color:var(--text-muted)">Day 1</span></td>
+            <td><span class="badge hungary">匈牙利</span><br>布達佩斯</td>
+            <td><b>Baross Hotel Check-in</b><br><span class="arrow-icon">➔</span> 多瑙河畔鞋子<br><span class="arrow-icon">➔</span> 國會大廈精美外觀夜景</td>
+            <td>步行或搭乘<br>路面電車 2 號線</td>
+            <td class="time-text">景點 24H 開放</td>
+            <td class="price-text">免費</td>
+            <td><b>【Sharon & 薏安首日抵達】</b><br>入住 Keleti 車站旁飯店放行李。傍晚沿著多瑙河散步，看國會大廈世界級金色點燈，吃碗匈牙利燉牛肉調整時差。</td>
+          </tr>
+          <tr data-date="9/22" data-country="斯洛伐克">
+            <td><b>9/22 (二)</b><br><span style="color:var(--text-muted)">Day 2</span></td>
+            <td><span class="badge slovakia">斯洛伐克</span><br>布拉提斯拉瓦</td>
+            <td><div class="highlight transit"><b>09:30 搭歐鐵跨國移動</b></div><br><span class="arrow-icon">➔</span> <b>Hotel Matyšák Check-in</b><br><span class="arrow-icon">➔</span> 藍色教堂 & 舊城區散步</td>
+            <td><b>已購 09:30 火車</b><br>(11:55 抵達)<br>市區步行</td>
+            <td class="time-text">舊城區 24H</td>
+            <td>火車已購<br><span class="price-text">景點免費</span></td>
